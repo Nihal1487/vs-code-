@@ -1,0 +1,47 @@
+body {
+  text-align: center;
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#container {
+  height: 200px;
+  width: 800px;
+  display: flex;
+  flex-direction: row; /* This is a defult  is means direction left to right */
+  /* flex-direction: column-reverse;  all box are arrange bottom to top  */
+  /* flex-direction: column;  all box are arrange top to bottom */
+  /*flex-direction: row-reverse; This is  oposite to row it means direction right to left */
+  justify-content: flex-start;
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  justify-content: space-around; /* when we use this them box1 and main contentbox space is half then box one and box2 also appy for last box    */
+  /* justify-content: space-between; */
+
+  
+}
+
+#box1 {
+  background-color: aqua;
+}
+
+#box2 {
+  background-color: pink;
+}
+
+#box3 {
+  background-color: lightsalmon;
+}
+
+#box4 {
+  background-color: lightgrey;
+}
+
+#box5 {
+  background-color: lightblue;
+}

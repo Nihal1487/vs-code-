@@ -1,0 +1,47 @@
+h1 {
+  height: 50px;
+  width: 500px;
+  background-color: cornflowerblue;
+  /* border-width: 4px;
+      border-color: brown;
+      border-style: dashed; */
+  border: 5px brown dashed;
+  text-align: center;
+}
+
+div {
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+  /* border-width: 3px;
+    border-color: black;
+    border-style: dotted;
+    border-style: solid; */
+  border: 3px black solid;
+  /* text-align: center; */
+  border-radius: 12px;
+  /* border-radius: 50%; when height and width is same we use border-radius: 50%;  for making perfect round */
+  /* padding-left: 50px; */
+   /* padding: 25px; this is apply for all side...samee */
+   padding: 1px 3px 5px 7px;
+   /* margin-top: 25px; */
+   /* margin: 14px;  this is apply for all side...samee */
+   margin: 14px 16px 18px 20px;
+   display: inline-block;
+}
+
+#div4{
+  color: black;
+  /* background-color: darkblue; */
+   background-color: rgba(0,255,0, 0.5);  /*  b  [a=alpha this decide color opocity it is between 0 to 1  1 is max and zero isinvisible ] */
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  padding: 25px;
+  /* display: inline; */
+  display: block;
+  /* display: none; */
+  /* visibility: hidden; */
+}
+
+

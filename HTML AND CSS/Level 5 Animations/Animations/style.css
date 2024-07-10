@@ -1,0 +1,47 @@
+.div {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+  border: black solid 2px;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  /* animation-name: cd;
+    animation-duration: 2s;
+    animation-timing-function: ease--out;
+    /* animation-delay: 0.5s; */
+  /* animation-iteration-count: infinite; */
+  /* animation-direction: normal; */
+  /* animation-direction: reverse; */
+  /* animation-direction: alternate; */
+  /* animation-direction: alternate-reverse/; */
+  animation: cd 3s linear 0s infinite normal;
+}
+
+/* @keyframes cd {
+  from {
+    left: 0px;
+    background-color: pink;
+  }
+  to {
+    left: 200px;
+    background-color: brown;
+  }
+}
+ */
+
+@keyframes cd {
+  0% {
+    left: 0px;
+    background-color: pink;
+  }
+
+  25% {
+    background-color: aqua;
+  }
+  100% {
+    left: 800px;
+    background-color: brown;
+  }
+}

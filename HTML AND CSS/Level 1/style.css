@@ -1,0 +1,74 @@
+* {
+  color: rgb(15, 100, 157);
+} /*This is univaesel selecter  */
+h1 {
+  color: darkblue;
+  /* text-decoration: line-through; */
+  /* text-decoration: overline; */
+  /* text-decoration: red underline; */
+  text-decoration: rgb(255, 247, 5) wavy underline;
+} /* (this is text decorations) */
+
+p {
+  color: rgb(15, 100, 157);
+}
+
+button {
+  color: brown;
+  background-color: aqua;
+}
+
+body {
+  /* background-color: black; */
+  /* background-color: rgb(255, 000, 000); This is color using value */
+  background-color: #550000;  /*  This color using hexadecinal */
+  /* background-color: #ffff00; this is practis */
+}
+#Gamerz {
+  color: chocolate;
+}
+
+.class {
+  color: cadetblue;
+}
+
+p {
+  /* text-align: left; */
+  /* text-align: right; */
+  /* text-align: center;   */
+  text-align: start;
+  /* text-align: end;  */
+} /*[this is use for text aline]  {when start=left and End=right}*/
+
+.h1{
+  font-weight: normal;
+}
+
+.h2{
+  font-weight: bold;
+}
+
+.h3{
+  font-weight: bolder;
+}
+
+.h4{
+  font-weight: lighter;
+}
+
+#one 
+{
+  font-family: Arial;
+  font-size: 14px;
+  line-height: normal;
+}
+#two{
+  font-family: cursive;
+  font-size: 20px;
+  line-height: 87pxl;
+  /* text-transform: uppercase; */
+  text-transform: capitalize;
+  /* text-transform: lowercase; */
+  /* text-transform: none; */
+}
+

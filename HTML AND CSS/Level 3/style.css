@@ -1,0 +1,53 @@
+body {
+  font-size: 14px;
+}
+div{
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    display:inline-block;
+}
+#box1 {
+  height: 200px;
+  width: 200px;
+  background-color: green;
+  font-size: 14px;
+}
+
+#box2 {
+  /* height: 100px; */
+  height: 14vh; /*  vh= it takes a 14% space of the browswe page */
+  /* width: 60%; */
+  width: 14vw; /*  vw= it takes a 14% space of the browswe page */
+  background-color: yellow;
+  margin-left: 30%;
+  font-size: 2em; /*1em is equal to perent`s font size 2em=double of perent`s font size */
+  /* font-size: 0.5em; */
+  font-size: 2rem; /* rem is use the body tag font size and multifly with entered rem value  */
+}
+
+#panda1{
+   background-image: url("panda_1.jpg");
+   background-size: cover;
+}
+
+#panda2{
+    background-image: url("panda_2.jpg");
+    background-size: cover;
+}
+
+#panda3{
+    background-image: url("panda_3.jpg");
+    background-size: cover;
+}
+
+#panda4{
+    background-image: url("panda_4.jpg");
+    background-size: cover;
+}
+
+#panda5{
+    background-image: url("panda_5.jpg");
+    background-size: cover;
+}

@@ -1,0 +1,29 @@
+.div{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+    background-color: aqua;
+    border: black solid 2px;
+    /* transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in; may more funstion we use for this 
+    transitio           n-delay: 2s; */
+    /* transition: all 0.5s ease-in 2s;  this is shortcut 1 is property 2 is duration 3 is function 4 is dealy */
+    /* transform: rotate(45deg); also we rotate in x,y,z axis */
+    /* transform: scale(0.5); scale is  fuse for how many time big or smAll */
+    transition: 1s;
+}
+
+.div:hover{
+         /* transform: rotate(360deg); */
+         /* transform: translateX(250px);
+         transform: translateX(-250px);
+         transform: translateY(250px);
+         transform: translateY(-250px); */
+         /* transform: translate(250px,100px); */
+         transform: skew(61deg);
+         background-color: rgb(235, 18, 54);   
+}
+
