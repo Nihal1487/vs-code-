@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes</title>
+  </head>
+  <body>
+    <h1>classess</h1>
+
+    <script>
+      class Product {
+        constructor(itemname, price, discount, Productcode) {
+          this.itemname = itemname;
+          this.price = price;
+          this.discount = discount;
+          this.Productcode = Productcode;
+        }
+      }
+
+      let pencil = new Product("pencil", 7, 2, "P7");
+
+      const Product1 = class Product {
+        constructor(itemname, price, discount, Productcode) {
+          this.itemname = itemname;
+          this.price = price;
+          this.discount = discount;
+          this.Productcode = Productcode;
+        }
+         get getDiscountvalue(){
+          return  this.discount 
+         }
+        set setDiscountvalue(value){
+            this.discount = value;
+        }
+// method
+     
+      jdiscountValue(){
+        return this.discount*this.price/100
+      } 
+
+    };
+
+   let chair = new Product("Chair",699,5,"c6");
+   
+     
+   
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions</title>
+  </head>
+  <body>
+    <h1>Functions</h1>
+
+    <script>
+      // function who dont return any values
+
+      function coockMaggi(maggi, water, pan) {
+        console.log(
+          "Your Maggi will be ready in " +
+            maggi * 2 +
+            " Minutes " +
+            " Ingridiant use are :-" +
+            maggi +
+            " Maggi" +
+            water +
+            " Cups of water" +
+            " using " +
+            pan +
+            " tapeli"
+        );
+      }
+
+      coockMaggi(2, 4, 1);
+
+      // function who return any values
+
+      let bread = prompt("Which Bread Do you like ");
+      let vaggies = prompt("Whitch vaggies do you like ");
+      let souces = prompt("Whitch souces is do you like ");
+
+      function makeSandWich(bread, vaggies, souces) {
+        let sandwich =
+          bread +
+          " bread " +
+          vaggies +
+          " " +
+          souces +
+          " Your sandwich is ready ";
+        return sandwich;
+      }
+      let vegSandwich = makeSandWich(bread, vaggies, souces);
+      console.log(vegSandwich);
+    </script>
+  </body>
+</html>

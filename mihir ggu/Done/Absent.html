@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Apply styles to the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .copy-button {
+            margin-bottom: 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Style the main container */
+        .main {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Style the heading */
+        .student {
+            color: #333;
+        }
+
+        /* Style the input field */
+        .input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Style the Absent Students List heading */
+        .abst h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Keyframe animation for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #courseSelect{
+            
+             border: solid black 2px;            
+
+        }
+
+        .selecth2{
+            margin-top: 15px;
+        }  
+
+        .rollno{
+            margin-top: 15px;
+        }
+  
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="sta">
+            <h1 class="student">Student Attendance</h1>
+        </div>
+        <div class="select">
+            <h2 class="selecth2">select Stander</h2>
+            <select id="courseSelect" onchange="changeCourse()">
+                <option value="BSc IT">BSc IT</option>
+                <option value="BCA">BCA</option>
+            </select>
+        </div>
+        <div class="rollno">
+            <h3>Enter Roll Number</h3>
+        </div>
+        <div class="input">
+            <input type="text" id="rollNumber" onkeyup="handleKeyPress(event)">
+        </div>
+        <div class="abst">
+            <h2>Absent Students List :</h2>
+            <button class="copy-button" onclick="copyAbsentStudents()">Copy</button>
+
+        </div>
+        <ul id="absentList"></ul>
+    </div>
+    
+    <script>
+        // Your JavaScript code here
+        // Define arrays to store student information with attendance status for each course
+        const bscItStudents = [
+            { rollNumber: "1", name: "John", absent: false },
+            { rollNumber: "2", name: "Alice", absent: false },
+            { rollNumber: "3", name: "Bob", absent: false },
+            { rollNumber: "4", name: "Eva", absent: false },
+            { rollNumber: "5", name: "Daniel", absent: false },
+            { rollNumber: "6", name: "Sophia", absent: false },
+            { rollNumber: "7", name: "Mia", absent: false },
+            { rollNumber: "8", name: "Liam", absent: false },
+            { rollNumber: "9", name: "Olivia", absent: false },
+            { rollNumber: "10", name: "William", absent: false },
+            // Add more BSc IT students here
+        ];
+
+        const bcaStudents = [
+            { rollNumber: "1", name: "Grace", absent: false },
+            { rollNumber: "2", name: "Michael", absent: false },
+            { rollNumber: "3", name: "Emma", absent: false },
+            { rollNumber: "4", name: "James", absent: false },
+            { rollNumber: "5", name: "Sophie", absent: false },
+            { rollNumber: "6", name: "Lucas", absent: false },
+            { rollNumber: "7", name: "Ava", absent: false },
+            { rollNumber: "8", name: "Logan", absent: false },
+            { rollNumber: "9", name: "Chloe", absent: false },
+            { rollNumber: "10", name: "Noah", absent: false },
+            // Add more BCA students here
+        ];
+
+        let currentCourse = "BSc IT";
+        const courseSelect = document.getElementById("courseSelect");
+
+        const absentStudents = [];
+
+        function handleKeyPress(event) {
+            const rollNumberInput = document.getElementById("rollNumber").value;
+            
+            if (event.key === "Enter" && rollNumberInput.trim() !== "") {
+                markAbsent();
+            } else if (event.key === "Backspace") {
+                // Handle Backspace key press
+                if (rollNumberInput === "") {
+                    // If the input field is empty, remove the last student from the absent list
+                    removeLastStudent();
+                } else {
+                    // If the input field is not empty, remove the last character from it
+                    document.getElementById("rollNumber").value = rollNumberInput.slice(0, -1);
+                }
+            }
+        }
+
+        function markAbsent() {
+            const rollNumberInput = document.getElementById("rollNumber").value;
+            const resultElement = document.getElementById("absentList");
+
+            let students;
+            if (currentCourse === "BSc IT") {
+                students = bscItStudents;
+            } else if (currentCourse === "BCA") {
+                students = bcaStudents;
+            }
+
+            const student = findStudent(students, rollNumberInput);
+
+            if (student !== null && !student.absent) {
+                student.absent = true;
+                absentStudents.push(student);
+                displayAbsentStudents(absentStudents);
+             } else if (student !== null && student.absent) {
+                 alert(`${student.name} is already marked as absent.`);
+            } else {
+                alert("Student not found or the input is empty.");
+            }
+
+            // Clear the input field after marking as absent
+            document.getElementById("rollNumber").value = "";
+        }
+
+        function displayAbsentStudents(absentStudents) {
+            const absentListElement = document.getElementById("absentList");
+            absentListElement.innerHTML = "";
+
+            absentStudents.forEach(student => {
+                const li = document.createElement("li");
+                li.innerHTML = `${student.rollNumber} ${student.name}`;
+                absentListElement.appendChild(li);
+            });
+        }
+
+        function removeLastStudent() {
+            if (absentStudents.length > 0) {
+                absentStudents.pop();
+                displayAbsentStudents(absentStudents);
+            }
+        }
+
+        function removeStudent(rollNumber) {
+            const studentIndex = absentStudents.findIndex(student => student.rollNumber === rollNumber);
+            if (studentIndex !== -1) {
+                absentStudents.splice(studentIndex, 1);
+                displayAbsentStudents(absentStudents);
+            }
+        }
+
+        function findStudent(students, rollNumber) {
+            for (let i = 0; i < students.length; i++) {
+                if (students[i].rollNumber === rollNumber) {
+                    return students[i];
+                }
+            }
+            return null; // Return null if the roll number is not found
+        }
+
+        function changeCourse() {
+            currentCourse = courseSelect.value;
+        }
+
+        function copyAbsentStudents() {
+            const absentListElement = document.getElementById("absentList");
+            const absentStudentsList = [];
+
+            absentListElement.childNodes.forEach(li => {
+                const text = li.textContent.trim();
+                if (text !== "") {
+                    absentStudentsList.push(text);
+                }
+            });
+
+            const textToCopy = absentStudentsList.join('\n');
+            copyTextToClipboard(textToCopy);
+            alert("Absent students' names and roll numbers copied to clipboard.");
+        }
+
+        function copyTextToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+        
+    </script>
+</body>
+</html>

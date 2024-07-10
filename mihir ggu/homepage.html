@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #007bff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            transform: perspective(1000px) rotateX(10deg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        a {
+            display: block;
+            font-size: 18px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #007bff;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            color: #fff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Student Management System</h1>
+        <a href="Absent.html">Student Attendance</a>
+        <a href="testmarks.html">Test Marks Management</a>
+        <a href="adjustname.html">The Register</a>
+        <a href="StdinfoSYSTEM.html">Get Student Info</a>
+
+    </div>
+</body>
+</html>

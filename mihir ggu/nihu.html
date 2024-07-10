@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Marks Management</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .student-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .student-card {
+            flex-basis: calc(50% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .roll-number {
+            font-weight: bold; /* Add this style to make roll numbers bold */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Marks Management</h1>
+        <div id="inputSection">
+            <div>
+                <label for="numSubjects">Enter the number of subjects:</label>
+                <input type="number" id="numSubjects">
+            </div>
+            <button onclick="setupSubjects()">Submit</button>
+        </div>
+
+        <div id="subjectNamesInput" style="display: none;">
+            <label for="subjectNames">Enter subject names separated by spaces:</label>
+            <input type="text" id="subjectNames">
+            <button onclick="setSubjectNames()">Submit</button>
+        </div>
+
+        <div id="marksInput" style="display: none;">
+            <!-- Test marks input section will be generated here -->
+        </div>
+
+        <div id="studentList" style="display: none;">
+            <h2>Student List</h2>
+            <div class="student-list" id="studentListBody"></div>
+        </div>
+    </div>
+
+    <script>
+        let subjectNames = [];
+        let studentNames = ["Dhabudu", "Panda"]; // Fixed student names
+        let numSubjects = 0;
+        let numStudents = studentNames.length; // Set the desired number of students
+
+        function setupSubjects() {
+            numSubjects = parseInt(document.getElementById("numSubjects").value);
+            if (numSubjects >= 1 && numSubjects <= 10) {
+                document.getElementById("subjectNamesInput").style.display = "block";
+                document.getElementById("inputSection").style.display = "none";
+            } else {
+                alert("Invalid number of subjects. Please enter a number between 1 and 10.");
+            }
+        }
+
+        function setSubjectNames() {
+            subjectNames = document.getElementById("subjectNames").value.split(" ");
+            if (subjectNames.length === numSubjects) {
+                document.getElementById("subjectNamesInput").style.display = "none";
+                generateMarksInput(subjectNames);
+            } else {
+                alert(`Please enter ${numSubjects} subject names.`);
+            }
+        }
+
+        function generateMarksInput(subjectNames) {
+            const marksInputDiv = document.getElementById("marksInput");
+            marksInputDiv.innerHTML = "";
+
+            for (let i = 0; i < numStudents; i++) {
+                const studentDiv = document.createElement("div");
+                studentDiv.classList.add("student-card");
+                studentDiv.innerHTML = `<h3 class="roll-number">Student ${i + 1}</h3>`;
+
+                for (let j = 0; j < subjectNames.length; j++) {
+                    const label = document.createElement("label");
+                    label.textContent = `${subjectNames[j]}: `;
+                    const input = document.createElement("input");
+                    input.type = "number";
+                    input.id = `student${i + 1}-${subjectNames[j]}`;
+                    studentDiv.appendChild(label);
+                    studentDiv.appendChild(input);
+                }
+
+                marksInputDiv.appendChild(studentDiv);
+            }
+
+            const submitButton = document.createElement("button");
+            submitButton.textContent = "Submit";
+            submitButton.onclick = displayStudentList;
+            marksInputDiv.appendChild(submitButton);
+            marksInputDiv.style.display = "block";
+        }
+
+        function displayStudentList() {
+            const studentList = document.getElementById("studentListBody");
+            studentList.innerHTML = "";
+
+            for (let i = 0; i < numStudents; i++) {
+                const studentCard = document.createElement("div");
+                studentCard.classList.add("student-card");
+
+                const rollNumber = document.createElement("p");
+                rollNumber.classList.add("roll-number"); // Add the class to make it bold
+                rollNumber.textContent = `Roll Number: S00${i + 1}`;
+
+                const name = document.createElement("p");
+                name.textContent = `Name: ${studentNames[i]}`;
+
+                const subjects = document.createElement("p");
+                subjects.textContent = `Subjects: ${subjectNames.join(", ")}`;
+
+                const marks = document.createElement("p");
+                marks.textContent = "Marks: ";
+
+                for (let j = 0; j < numSubjects; j++) {
+                    const subjectName = subjectNames[j];
+                    const mark = document.getElementById(`student${i + 1}-${subjectNames[j]}`).value;
+                    marks.textContent += `${subjectName}: ${mark}`;
+                    if (j < numSubjects - 1) {
+                        marks.textContent += ", ";
+                    }
+                }
+
+                studentCard.appendChild(rollNumber);
+                studentCard.appendChild(name);
+                studentCard.appendChild(subjects);
+                studentCard.appendChild(marks);
+                studentList.appendChild(studentCard);
+            }
+
+            document.getElementById("studentList").style.display = "block";
+        }
+    </script>
+</body>
+</html>

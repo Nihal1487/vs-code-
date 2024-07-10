@@ -1,0 +1,168 @@
+.body{
+    background-color: white;
+}
+
+.main{
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    border: black solid 2.7px;
+    margin: auto; border:rgb(57, 35, 38) solid 3px;
+}
+.main:hover{
+   box-shadow: 7px 7px 7px #1e2324;
+    transition: 0.4s;
+}
+
+.well{
+     font-family: cursive;
+      margin: auto;
+      text-align: center;  
+      color: #e49944;         
+}
+
+.project{
+      font-family: sans-serif;
+      text-align: center;
+      color: #16849f;
+      font-size: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cyber-devils {
+    font-size: 27px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 10px;
+    background: linear-gradient(to right, #00ff00, #ff0000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: neonGlow 1s infinite alternate, moveUpDown 3s ease-in-out infinite;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+    100% {
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.button1{
+    margin-top: 20px;
+    margin-left: 5%;
+       height: 50px;
+       width:90%;
+      align-items: center;
+}
+
+.bt1{
+    background-color: #c391ef;
+    height: 50px;
+    width: 100%;
+   border: black solid 2px;
+   border-radius: 30px;
+}
+
+.bt1:hover{
+    height: 55px;
+    width: 360;
+   border: black solid 2px;
+   border-radius: 30px;
+   transition: 0.1s;
+   transform: scale(0.85);
+}
+.button2{
+    margin-top: 10px;
+    margin-left: 5%;
+       height: 50px;
+       width:90%;
+      align-items: center;
+}
+
+.bt2{
+   background-color:  #c391ef;
+    height: 50px;
+    width: 100%;
+   border: black solid 2px;
+   border-radius: 30px;
+}
+
+
+.bt2:hover{
+    height: 55px;
+    width: 360;
+   border: black solid 2px;
+   border-radius: 30px;
+   transition: 0.1s;
+   transform: scale(0.85);
+}
+
+.button3{
+    margin-top: 10px;
+    margin-left: 5%;
+       height: 50px;
+       width:90%;
+      align-items: center;
+}
+
+.bt3{
+   background-color:  #c391ef;
+    height: 50px;
+    width: 100%;
+   border: black solid 2px;
+   border-radius: 30px;
+}
+
+
+.bt3:hover{
+    height: 55px;
+    width: 360;
+   border: black solid 2px;
+   border-radius: 30px;
+   transition: 0.1s;
+   transform: scale(0.85);
+}
+
+.button4{
+    margin-top: 10px;
+    margin-left: 5%;
+       height: 50px;
+       width:90%;
+      align-items: center;
+}
+
+.bt4{
+   background-color:  #c391ef;
+    height: 50px;
+    width: 100%;
+   border: black solid 2px;
+   border-radius: 30px;
+}
+
+
+.bt4:hover{
+    height: 55px;
+    width: 360;
+   border: black solid 2px;
+   border-radius: 30px;
+   transition: 0.1s;
+   transform: scale(0.95);
+}

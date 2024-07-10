@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><Object></Object></title>
+  </head>
+  <body>
+    <h1>Object</h1>
+
+    <script>
+      // object
+      let animal = {
+        name: "panda",
+        legs: 4,
+      };
+
+      // dot Notation
+      console.log(animal.name);
+
+      //   backet Notation
+
+      console.log(animal["legs"]);
+
+      // Advance objects
+
+      //     const course = {
+      //       letcture: 3,
+      //       title: "Js",
+      //       notes: {
+      //         introduction: "Wellcome to Js Course",
+      //       },
+
+      //       enrole() {
+      //         console.log("You are sucessfuly Enroled");
+      //       },
+      //     }
+
+      //     console.log(course.title )
+      //    course.enrole()
+
+      //  // Factory Function
+
+      //   function createCourse(title) {
+      //     return {
+      //       title: title,
+      //       enrole() {
+      //         console.log("You are sucessfuly Enroled");           
+      //       }
+      //     }
+      //   }
+      // constructive function
+
+      function Course(title) {
+        (this.title = title), (this.lecture = 10);
+        this.enrole = function () {
+          console.log("You are sucessfuly Enroled");
+        };
+      }
+
+      const course = new Course("Js");
+
+      course.enrole();
+      delete course.lecture
+      console.log(course);
+    </script>
+  </body>
+</html>

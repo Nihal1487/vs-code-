@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information System</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .search-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Information System</h1>
+        <form id="studentForm">
+            <label for="studentRollNumber">Roll Number:</label>
+            <input type="text" id="studentRollNumber" required>
+
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" required>
+
+            <label for="studentAge">Age:</label>
+            <input type="number" id="studentAge" required>
+
+            <label for="studentAddress">Address:</label>
+            <textarea id="studentAddress" rows="4" required></textarea>
+
+            <label for="behavior">Behavior:</label>
+            <select id="behavior" required>
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Average">Average</option>
+                <option value="Poor">Poor</option>
+            </select>
+
+            <label for="status">Status:</label>
+            <select id="status" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+
+            <label for="parentName">Parent/Guardian Name:</label>
+            <input type="text" id="parentName" required>
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" required>
+
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" required>
+
+            <!-- Additional Fields -->
+            <label for="course">Course:</label>
+            <input type="text" id="course" required>
+
+            <label for="standard">Standard:</label>
+            <input type="text" id="standard" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="button" onclick="addStudent()">Add Student</button>
+        </form>
+
+        <div class="search-container">
+            <label for="searchRollNumber">Search by Roll Number:</label>
+            <input type="text" id="searchRollNumber">
+            <button type="button" onclick="searchStudent()">Search</button>
+        </div>
+
+        <div id="studentDetails">
+            <!-- Student details will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        const studentData = [];
+
+        function addStudent() {
+            const rollNumber = document.getElementById("studentRollNumber").value;
+            const studentName = document.getElementById("studentName").value;
+            const age = document.getElementById("studentAge").value;
+            const address = document.getElementById("studentAddress").value;
+            const behavior = document.getElementById("behavior").value;
+            const status = document.getElementById("status").value;
+            const parentName = document.getElementById("parentName").value;
+            const contactNumber = document.getElementById("contactNumber").value;
+            const email = document.getElementById("email").value;
+            const course = document.getElementById("course").value;
+            const standard = document.getElementById("standard").value;
+            const gender = document.getElementById("gender").value;
+
+            if (rollNumber && studentName && age && address && behavior && status && parentName && contactNumber && email && course && standard && gender) {
+                // Create a student object
+                const student = {
+                    rollNumber: rollNumber,
+                    studentName: studentName,
+                    age: age,
+                    address: address,
+                    behavior: behavior,
+                    status: status,
+                    parentName: parentName,
+                    contactNumber: contactNumber,
+                    email: email,
+                    course: course,
+                    standard: standard,
+                    gender: gender
+                };
+
+                // Add the student to the data array
+                studentData.push(student);
+
+                // Clear the form fields
+                document.getElementById("studentRollNumber").value = "";
+                document.getElementById("studentName").value = "";
+                document.getElementById("studentAge").value = "";
+                document.getElementById("studentAddress").value = "";
+                document.getElementById("behavior").value = "Excellent";
+                document.getElementById("status").value = "Active";
+                document.getElementById("parentName").value = "";
+                document.getElementById("contactNumber").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("course").value = "";
+                document.getElementById("standard").value = "";
+                document.getElementById("gender").value = "Male";
+            }
+        }
+
+        function searchStudent() {
+            const searchRollNumber = document.getElementById("searchRollNumber").value;
+            const student = studentData.find(s => s.rollNumber === searchRollNumber);
+
+            if (student) {
+                const studentDetails = `
+                    <h2>Student Details</h2>
+                    <p><strong>Roll Number:</strong> ${student.rollNumber}</p>
+                    <p><strong>Name:</strong> ${student.studentName}</p>
+                    <p><strong>Age:</strong> ${student.age}</p>
+                    <p><strong>Address:</strong> ${student.address}</p>
+                    <p><strong>Behavior:</strong> ${student.behavior}</p>
+                    <p><strong>Status:</strong> ${student.status}</p>
+                    <p><strong>Parent/Guardian Name:</strong> ${student.parentName}</p>
+                    <p><strong>Contact Number:</strong> ${student.contactNumber}</p>
+                    <p><strong>Email Address:</strong> ${student.email}</p>
+                    <p><strong>Course:</strong> ${student.course}</p>
+                    <p><strong>Standard:</strong> ${student.standard}</p>
+                    <p><strong>Gender:</strong> ${student.gender}</p>
+                `;
+
+                document.getElementById("studentDetails").innerHTML = studentDetails;
+            } else {
+                document.getElementById("studentDetails").innerHTML = "<p>Student not found.</p>";
+            }
+        }
+    </script>
+</body>
+</html>

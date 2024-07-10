@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Apply styles to the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Style the main container */
+        .main {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Style the heading */
+        .student {
+            color: #333;
+        }
+
+        /* Style the input field */
+        .input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Style the Absent Students List heading */
+        .abst h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Keyframe animation for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="sta">
+            <h1 class="student">Student Attendance</h1>
+        </div>
+        <div class="rollno">
+            <h3>Enter Roll Number</h3>
+        </div>
+        <div class="input">
+            <input type="text" id="rollNumber" onkeyup="handleKeyPress(event)">
+        </div>
+        <div class="abst">
+            <h2>Absent Students List :</h2>
+        </div>
+        <ul id="absentList"></ul>
+    </div>
+    
+    <script>
+        // Your JavaScript code here
+        // Define an array to store student information with attendance status
+        const students = [
+            { rollNumber: "1", name: "John", absent: false },
+            { rollNumber: "2", name: "Alice", absent: false },
+            { rollNumber: "3", name: "Bob", absent: false },
+            { rollNumber: "4", name: "Eva", absent: false },
+            { rollNumber: "5", name: "Daniel", absent: false },
+            { rollNumber: "6", name: "Sophia", absent: false },
+            { rollNumber: "7", name: "Mia", absent: false },
+            { rollNumber: "8", name: "Liam", absent: false },
+            { rollNumber: "9", name: "Olivia", absent: false },
+            { rollNumber: "10", name: "William", absent: false },
+            // Add more students here
+        ];
+
+        const absentStudents = [];
+
+        function handleKeyPress(event) {
+            const rollNumberInput = document.getElementById("rollNumber").value;
+            
+            if (event.key === "Enter" && rollNumberInput.trim() !== "") {
+                markAbsent();
+            } else if (event.key === "Backspace") {
+                // Handle Backspace key press
+                if (rollNumberInput === "") {
+                    // If the input field is empty, remove the last student from the absent list
+                    removeLastStudent();
+                } else {
+                    // If the input field is not empty, remove the last character from it
+                    document.getElementById("rollNumber").value = rollNumberInput.slice(0, -1);
+                }
+            }
+        }
+
+        function markAbsent() {
+            const rollNumberInput = document.getElementById("rollNumber").value;
+            const resultElement = document.getElementById("absentList");
+
+            const student = findStudent(students, rollNumberInput);
+
+            if (student !== null && !student.absent) {
+                student.absent = true;
+                absentStudents.push(student);
+                displayAbsentStudents(absentStudents);
+             } else if (student !== null && student.absent) {
+                 alert(`${student.name} is already marked as absent.`);
+            } else {
+                alert("Student not found or the input is empty.");
+            }
+
+            // Clear the input field after marking as absent
+            document.getElementById("rollNumber").value = "";
+        }
+
+        function displayAbsentStudents(absentStudents) {
+            const absentListElement = document.getElementById("absentList");
+            absentListElement.innerHTML = "";
+
+            absentStudents.forEach(student => {
+                const li = document.createElement("li");
+                li.innerHTML = `Roll Number: ${student.rollNumber}, Name: ${student.name} <button class="remove-button" onclick="removeStudent('${student.rollNumber}')">Remove</button>`;
+                absentListElement.appendChild(li);
+            });
+        }
+
+        function removeLastStudent() {
+            if (absentStudents.length > 0) {
+                absentStudents.pop();
+                displayAbsentStudents(absentStudents);
+            }
+        }
+
+        function removeStudent(rollNumber) {
+            const studentIndex = absentStudents.findIndex(student => student.rollNumber === rollNumber);
+            if (studentIndex !== -1) {
+                absentStudents.splice(studentIndex, 1);
+                displayAbsentStudents(absentStudents);
+            }
+        }
+
+        function findStudent(students, rollNumber) {
+            for (let i = 0; i < students.length; i++) {
+                if (students[i].rollNumber === rollNumber) {
+                    return students[i];
+                }
+            }
+            return null; // Return null if the roll number is not found
+        }
+    </script>
+</body>
+</html>

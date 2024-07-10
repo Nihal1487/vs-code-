@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        #container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #007bff;
+            font-size: 16px;
+            margin-right: 10px;
+            border-radius: 4px 0 0 4px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;transform: scale(1.05);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        ul li:hover {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        .student-list-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .student-roll {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Student Management System</h2>
+        <div class="student-input">
+            <input type="text" id="studentName" placeholder="Enter student name">
+        </div>
+        <div class="button-container">
+            <button onclick="addStudent()">Add Student</button>
+            <button onclick="sortStudents()">Sort Students</button>
+            <button onclick="removeStudent()">Remove Student</button>
+        </div>
+        <ul id="student-list"></ul>
+    </div>
+
+    <script>
+         // Function to load student data from localStorage
+         function loadStudentData() {
+            const savedData = localStorage.getItem('studentData');
+            if (savedData) {
+                studentData = JSON.parse(savedData);
+                displayStudents();
+            }
+        }
+
+        // Array to store the student data (name and roll number)
+        let studentData = [];
+
+        // Load student data on page load
+        loadStudentData();
+
+        function addStudent() {
+            // Get the student name from the input field
+            const studentNameInput = document.getElementById("studentName");
+            const studentName = studentNameInput.value.trim();
+
+            if (studentName) {
+                // Add the student to the data array
+                studentData.push({ name: studentName });
+
+                // Save the updated data to localStorage
+                localStorage.setItem('studentData', JSON.stringify(studentData));
+
+                // Clear the input field
+                studentNameInput.value = "";
+
+                // Display the current list of students
+                displayStudents();
+            }
+        }
+
+        function sortStudents() {
+            // Sort the student data alphabetically by last names
+            studentData.sort((a, b) => {
+                const lastNameA = a.name.split(" ").pop().toLowerCase();
+                const lastNameB = b.name.split(" ").pop().toLowerCase();
+                return lastNameA.localeCompare(lastNameB);
+            });
+
+            // Update the roll numbers based on the sorted order
+            studentData.forEach((student, index) => {
+                student.roll = (index + 1).toString();
+            });
+
+            // Save the updated data to localStorage
+            localStorage.setItem('studentData', JSON.stringify(studentData));
+
+            // Display the sorted list of students
+            displayStudents();
+        }
+
+        function displayStudents() {
+            // Get the <ul> element to display the student list
+            const studentList = document.getElementById("student-list");
+
+            // Clear the current list
+            studentList.innerHTML = "";
+
+            // Iterate through the student data and create <li> elements to display roll numbers and names
+            studentData.forEach((student) => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <div class="student-list-item">
+                        <div class="student-roll">${student.roll}</div>
+                        <div>${student.name}</div>
+                    </div>
+                `;
+                studentList.appendChild(listItem);
+            });
+        }
+
+        function removeStudent() {
+            // Get the student name from the input field
+            const studentNameInput = document.getElementById("studentName");
+            const studentName = studentNameInput.value.trim();
+
+            if (studentName) {
+                // Find and remove the student from the data array
+                studentData = studentData.filter(student => student.name !== studentName);
+
+                // Save the updated data to localStorage
+                localStorage.setItem('studentData', JSON.stringify(studentData));
+
+                // Clear the input field
+                studentNameInput.value = "";
+
+                // Display the current list of students
+                displayStudents();
+            }
+        }
+    </script>
+
+
+</body>
+</html>

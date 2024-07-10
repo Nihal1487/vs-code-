@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e; /* Dark background color */
+            color: #ffffff; /* Light text color */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        nav a:hover {
+            color: #4CAF50; /* Highlight color on hover */
+        }
+
+        .main-container {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(45deg, #333, #444); /* Gradient background */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+            margin: 20px;
+            animation: fadeInUp 1s ease; /* Fade-in animation */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2, p {
+            color: #ffffff; /* Light text color */
+        }
+
+        .random-images {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .random-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 10px;
+            border: 2px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .random-image:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./home">Home</a>
+        <a href="./login">Login</a>
+        <a href="./register">Register</a>
+        <a href="./secret">Secret</a>
+        <a href="./logout">Logout</a>
+    </nav>
+
+    <header>
+        <h1>Professional Landing Page</h1>
+    </header>
+
+    <div class="main-container">
+        <h2>Welcome to Landing Page</h2>
+        <p>Discover the best services and products tailored just for you.</p>
+
+        <div class="random-images">
+            <img class="random-image" src="https://source.unsplash.com/150x150/?nature" alt="Random Image 1">
+            <img class="random-image" src="https://source.unsplash.com/150x150/?technology" alt="Random Image 2">
+            <img class="random-image" src="https://source.unsplash.com/150x150/?architecture" alt="Random Image 3">
+        </div>
+
+        <div class="cta-buttons">
+            <a href="./login" class="cta-button">Login</a>
+            <a href="./register" class="cta-button">Register</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles-light.css" id="light-mode" />
+    <link rel="stylesheet" href="styles-dark.css" id="dark-mode" disabled />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the Student Management System</h1>
+      <h2>Login</h2>
+      <form onsubmit="return loginUser()">
+        <div class="form-group">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            placeholder="Enter Username"
+          />
+        </div>
+        <div class="form-group">
+          <!-- <label for="password">Password:</label> -->
+          <div class="password-toggle">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter Password"
+            />
+            <i
+              class="fas fa-eye eye-icon"
+              id="show-password"
+              onclick="togglePasswordVisibility()"
+            ></i>
+          </div>
+        </div>
+        <button type="submit">Login</button>
+        <button onclick="toggleDarkMode()">Toggle Dark / Light Mode</button>
+      </form>
+      <p id="error-message" style="color: red"></p>
+    </div>
+
+    <script>
+      function toggleDarkMode() {
+        const lightMode = document.getElementById("light-mode");
+        const darkMode = document.getElementById("dark-mode");
+
+        if (lightMode.disabled) {
+          lightMode.removeAttribute("disabled");
+          darkMode.disabled = true;
+        } else {
+          lightMode.disabled = true;
+          darkMode.removeAttribute("disabled");
+        }
+      }
+
+      // Check if the user has a theme preference in local storage
+      const preferredTheme = localStorage.getItem("theme");
+
+      if (preferredTheme === "dark") {
+        // Set dark mode by default
+        toggleDarkMode();
+      }
+
+      function toggleDarkMode() {
+        const lightMode = document.getElementById("light-mode");
+        const darkMode = document.getElementById("dark-mode");
+
+        if (lightMode.disabled) {
+          lightMode.removeAttribute("disabled");
+          darkMode.disabled = true;
+          // Save the user's theme preference
+          localStorage.setItem("theme", "light");
+        } else {
+          lightMode.disabled = true;
+          darkMode.removeAttribute("disabled");
+          // Save the user's theme preference
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function toggleDarkMode() {
+        const lightMode = document.getElementById("light-mode");
+        const darkMode = document.getElementById("dark-mode");
+
+        if (lightMode.disabled) {
+          lightMode.removeAttribute("disabled");
+          darkMode.disabled = true;
+        } else {
+          lightMode.disabled = true;
+          darkMode.removeAttribute("disabled");
+        }
+      }
+
+      function loginUser() {
+        // Get the input values
+        const usernameInput = document.getElementById("username").value;
+        const passwordInput = document.getElementById("password").value;
+
+        // Check if the username and password match your predefined values
+        if (usernameInput === "teacher" && passwordInput === "12345678") {
+          // Redirect to the next page after successful login
+          window.location.href = "homepage.html"; // Replace "nextpage.html" with your desired URL
+          return false; // Prevent the form submission (no need to submit the form if you're redirecting)
+        } else {
+          const errorMessage = document.getElementById("error-message");
+          errorMessage.textContent = "Invalid username or password";
+          return false; // Prevent the form submission
+        }
+      }
+
+      function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.main{
+    background-color: black;
+    border: white solid 3px;
+    height: auto;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.main:hover {
+    box-shadow: 7px 7px 7px #caedff;
+    transition: 0.4s;
+  }
+
+.sta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.student {
+    color: white;
+    font-size: 33px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 20px;
+    background: linear-gradient(to right, #00ff00, #ff0000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: neonGlow 1s infinite alternate, moveUpDown 3s ease-in-out infinite;
+  }
+  
+  @keyframes neonGlow {
+    0% {
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+    100% {
+      text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+  }
+  
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .rollno{
+    font-size: 27px;    
+      color: #8ecddd;
+  }
+
+  .input{
+      
+  }
+
+  .abst{
+    font-size: 17px;
+    color: #dac0a3;
+  }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loops</title>
+  </head>
+  <body>
+    <h1>Loops</h1>
+
+    <script>
+      // for loop
+      //   for (let i = 1; i <= 100; i++) {
+      //     console.log("Hello World");
+      //   }
+
+      // for (let i = 5; i <= 50; i + 5) {
+      //   console.log(i)
+      // }
+
+      for (let i = 0; i < 10; i++) {
+        if (i % 2 == 1) console.log(i);
+      }
+
+      // While loop
+
+      let i = 0;
+      while (i < 10) {
+        console.log("Hello World!");
+        i++;
+      }
+
+      //   do while loop
+      let j = 0;
+      do {
+        console.log("Hello World!");
+        j++;
+      } while (j < 10);
+
+      // for..Im  Loop  Better Understand when learn Arrys & Object
+      // Object
+
+      let = animal = {
+        name: "panda",
+        leg: "4",
+      };
+      for (let key in animal) {
+        console.log(key, animal[key]);
+      }
+      // Arrays
+
+      let names = ["A", "B"];
+      for (let index in names) {
+        console.log(index, names[index]);
+      }
+
+      // for...out Loop Better Understand when learn Arrys & Object
+
+      for (let name of names) {
+        console.log(name);
+      }
+    </script>
+  </body>
+</html>

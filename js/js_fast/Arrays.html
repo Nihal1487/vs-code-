@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+  </head>
+  <body>
+    <h1>Arrays..</h1>
+
+    <script>
+      // Arrays
+      let lang = ["c", "c++", "Html", "css", "Js", "python"];
+
+      console.log(lang);
+
+      console.log(lang[0]);
+      console.log(lang[1]);
+      console.log(lang[2]);
+      console.log(lang[3]);
+      console.log(lang[4]);
+      console.log(lang[5]);
+
+      // Advance arrays
+
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      // console.log(array);
+      console.log(array[4]);
+
+      const num = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+      console.log(num[6]);
+      console.log(num[num.length - 1]);
+
+      // push
+
+      num.push(10); // addd new Element end of the array
+      //  console.log(num.push(10))
+
+      // unshift
+
+      num.unshift(11); // add new element start of the array
+      console.log(num.push(11));
+
+      // pop
+
+      num.pop(); // remove one element last of the array
+
+      console.log(num.pop());
+
+      // shift
+
+      num.shift();
+
+      console.log(num.shift());
+
+      // change value
+
+      num[3] = 1487;
+      console.log(num);
+
+      const names = ["Panda", "Mahu", "Nihu", "kuku", "Dhabudu", "Panda"];
+
+      // Index of
+
+      // frist indexof
+      names.indexOf("Enter who you find using by name");
+
+      console.log(names.indexOf("Panda"));
+
+      // lastindexof
+
+      names.lastIndexOf("Enter who you find using by name");
+      console.log(names.lastIndexOf("Panda"));
+
+      // imcludeees   only work with primetive data type
+
+      names.includes("Mahu");
+      console.log(names.includes("Mahu"));
+
+      names.includes("Mahu");
+      console.log(names.includes("Mahu", 3));
+
+      // conct method   add some item in arrays
+
+      let names1 = ["Mahu", "Nihu", "Dhabudu"];
+      let names2 = ["Panda", "Gilodi", "Tabeto"];
+
+      console.log(names1.concat("Chiku"));
+      console.log(names2.concat("Diku"));
+      console.log(names1.concat(names2));
+
+      // slice use in remove items in as arrays
+
+      let names3 = names1.concat(names2);
+
+      // console.log(names3.slice(3))
+      console.log(names3.slice(1, 4));
+
+      // spred operator use for combine two arrawys this is much easy
+      let names4 = [...names1, ...names2];
+
+      console.log(names4);
+
+      //    For Loop in Arrays
+
+       
+    </script>
+  </body>
+</html>
